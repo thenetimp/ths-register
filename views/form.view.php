@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label>Resistor Value:</label> <a href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
                 <input type="text" class="form-control" id="resistor_value" name="resistor_value" placeholder="Resistor Value">
-                <p>Figure out the value of the resistor using the color code of the resistor representation below</p>
+                <p>Figure out the value of the resistor using the color code of the resistor representation below. Hover over the color to get the name of the color.</p>
                 <div class="resistor" style="position: relative; width: 70px; height: 25px; border: 2px solid #999; margin-top: 10px; margin-left: 30px;">
                     <div class="band-one" style="width: 10px; height: 21px; background-color: <?php echo $colors[$resistor[0]]; ?>; position: absolute; top: 0px; left: 5px; border: 1px solid #999; border-top: none; border-bottom: none;" title="<?php echo $colors[$resistor[0]]; ?>"></div>
                     <div class="band-two" style="width: 10px; height: 21px; background-color: <?php echo $colors[$resistor[1]]; ?>; position: absolute; top: 0px; left: 20px; border: 1px solid #999; border-top: none; border-bottom: none;" title="<?php echo $colors[$resistor[1]]; ?>"></div>
