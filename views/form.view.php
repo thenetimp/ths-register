@@ -34,6 +34,7 @@
                     <div class="band-three" style="width: 10px; height: 21px; background-color: <?php echo $colors[$resistor[2]]; ?>; position: absolute; top: 0px; left: 35px; border: 1px solid #999; border-top: none; border-bottom: none;" title="<?php echo $colors[$resistor[2]]; ?>"></div>
                 </div>
             </div>
+            <p>Upon creation of your account, your password will be emailed to the address you specified above.</p>
             <button type="submit" class="btn btn-primary">Create Account</button>
         </form>
     </div>

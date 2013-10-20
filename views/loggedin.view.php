@@ -1,0 +1,1 @@
+<p>You are currently logged in as another user and are unable to register another user until you log out.</p>
