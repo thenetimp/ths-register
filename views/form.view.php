@@ -25,7 +25,7 @@
                 <input type="text" class="form-control" id="last-name" name="last_name" placeholder="Enter your lastname"  value="<?php echo $last_name; ?>">
             </div>
             <div class="form-group">
-                <label>Resistor Value:</label> <a href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <label>Resistor Value:</label>
                 <input type="text" class="form-control" id="resistor_value" name="resistor_value" placeholder="Resistor Value">
                 &nbsp;
                 <p>Figure out the value of the resistor using the <a href="http://en.wikipedia.org/wiki/Electronic_color_code#Resistor_color-coding" target="_blank">color code of the resistor</a> representation below. Hover over the color to get the name of the color.</p>
