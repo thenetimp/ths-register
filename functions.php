@@ -9,6 +9,8 @@ namespace ths_register\functions;
  */
 function register_form()
 {
+    global $wpdb;
+  
     if(!is_user_logged_in()){
         
         // Define the errors array.
@@ -34,7 +36,21 @@ function register_form()
             {
                 $errors['email_address'] = $response;
             }
-        
+            
+            $nowtime = mktime(date('H'), date('i')-15, date('s'));
+            $now = date("Y-m-d H:i:s", $nowtime);
+            // Build the sql to check to see if another registration happened
+            // within 15 minutes from the same IP address.
+            $sql = $wpdb->prepare('select count(*) as counter from wp_users wu,wp_usermeta wum where (wum.meta_key = "registered_ip_address" and wum.meta_value = %s) and (wu.id = wum.user_id) and wu.user_registered > %s
+', $_SERVER['REMOTE_ADDR'], $now);
+            
+            $spamCheckResult = $wpdb->get_row($sql);
+
+            if($spamCheckResult->counter > 0)
+            {
+              $errors['spamcheck'] = "A user has recently registered from this IP address, please try again later.";
+            }
+
             // If we should check the resistor value check it.
             if(isset($_SESSION['resistor_value']) && 
                 ($_SESSION['resistor_value'] != "") &&
@@ -67,11 +83,14 @@ function register_form()
                         'ID' => $user_id,
                         'first_name' => $first_name,
                         'last_name' => $last_name,
-                        'display_name' => $last_name . " " . $first_name
+                        'display_name' => $last_name . " " . $first_name,
                     );
                 
                 // Set the nickname
                 $user_id = wp_update_user($user_data);
+
+                add_user_meta( $user_id, 'registered_ip_address', $_SERVER['REMOTE_ADDR']);
+
 
                 // Get the errors.
                 if(is_object($user_id))
