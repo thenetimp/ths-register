@@ -1,7 +1,7 @@
 <?php if(count($errors) > 0): ?>
-    <ul>
+    <ul class="error-list">
         <?php foreach($errors as $error): ?>
-            <?php print_r($error); ?>
+            <li><?php print_r($error); ?></li>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>
